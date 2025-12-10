@@ -2,7 +2,7 @@
 -- 플러그인 로드 전에 설정해야 합니다.
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
+  
 -- 배경 투명화 강제 적용 (치트키)
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
@@ -34,6 +34,6 @@ require("lazy").setup({
 -- 4. 기본 옵션 (줄 번호 등) - 나중에 따로 파일로 뺄 수 있지만 일단 여기에 둡니다.
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
