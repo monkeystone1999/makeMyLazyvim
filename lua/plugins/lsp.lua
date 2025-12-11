@@ -59,8 +59,16 @@ require("mason-lspconfig").setup({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
-          ["<Tab>"] = cmp.mapping.select_next_item(),
+          ["<CR>"] =  nil,
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              -- 메뉴가 열려있으면 선택한 항목을 확정(Confirm)
+              cmp.confirm({ select = true })
+            else
+              -- 메뉴가 없으면 그냥 탭(들여쓰기) 동작
+              fallback()
+            end
+          end, { "i", "s" })
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
