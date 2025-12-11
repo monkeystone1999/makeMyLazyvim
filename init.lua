@@ -37,3 +37,6 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
+vim.opt.autoindent = true    -- 윗줄의 들여쓰기를 그대로 따라감
+vim.opt.smartindent = true   -- C언어 스타일의 문법을 인식해서 들여쓰기 (중괄호 다음 등)
+vim.opt.breakindent = true   -- 줄바꿈 시 들여쓰기 유지
