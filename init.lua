@@ -21,6 +21,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+pcall(require, "config.keymaps")
 -- 3. 플러그인 로드 및 설정 시작
 require("lazy").setup({
   -- "lua/plugins" 폴더 안에 있는 모든 lua 파일을 플러그인으로 인식해라!

@@ -62,6 +62,7 @@ return {
     -- 파일 찾기 (파일명으로 검색)
     { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "파일 찾기 (Find Files)" },
     
+    { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "단축키 목록 검색 (Show Keys)" },
     -- 글자 찾기 (프로젝트 전체에서 특정 단어 검색 - grep)
     { "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "단어 찾기 (Live Grep)" },
     
