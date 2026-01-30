@@ -12,8 +12,6 @@ return {
     hint_enable = true, -- (선택) 커서가 있는 줄 끝에 힌트(전구 모양 등) 표시
     hint_prefix = "🐼 ",  -- 힌트 아이콘 (원하는 걸로 변경 가능)
     
-    -- 입력 중일 때만 띄우기
-    toggle_key = "<C-k>", -- (선택) 수동으로 껐다 켰다 할 단축키 (Ctrl+k)
   },
   config = function(_, opts)
     require("lsp_signature").setup(opts)

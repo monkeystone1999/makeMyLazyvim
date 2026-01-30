@@ -35,6 +35,7 @@ require("mason-lspconfig").setup({
           "--completion-style=detailed",
           "--function-arg-placeholders",
           "--fallback-style=llvm",
+                "--query-driver=**",
         },
       })
     end,

@@ -59,7 +59,7 @@ return {
     keys = {
       { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Git Diff 열기 (비교 모드)" },
       { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Git Diff 닫기" },
-      { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "현재 파일 변경 이력 보기" },
+      { "<leader>gl", "<cmd>DiffviewFileHistory %<cr>", desc = "현재 파일 변경 이력 보기" },
     },
   },
 }

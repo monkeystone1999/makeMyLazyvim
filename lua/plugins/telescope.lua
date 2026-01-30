@@ -80,5 +80,25 @@ return {
     
     -- ★ 투두 리스트 검색 (아까 설치한 플러그인 연동)
     { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "TODO 목록 검색" },
-  },
+  
+  { "gr", "<cmd>Telescope lsp_references<cr>", desc = "참조(호출) 찾기 (References)" },
+
+    -- 2. 정의 찾기 UI 버전 (Find Definition)
+    -- 'gd'는 바로 이동하지만, 이건 미리보기 팝업을 띄워줘서 확인하고 이동할 수 있습니다.
+    { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "정의 찾기 (미리보기)" },
+
+    -- 3. 전체 심볼 찾기 (Find Symbol)
+    -- 프로젝트 전체에서 함수나 변수 이름을 검색합니다. (Cscope 'symbol'과 유사)
+    -- (현재 파일 내 검색인 <leader>fs 와 다릅니다!)
+    { "<leader>ws", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "프로젝트 전체 심볼 찾기" },
+
+    -- 4. 구현부 찾기 (Implementation)
+    -- 헤더파일에 선언만 있고 소스파일에 구현이 있을 때, 바로 구현부로 점프합니다.
+    { "gi", "<cmd>Telescope lsp_implementations<cr>", desc = "구현부 찾기 (Implementation)" },
+
+    -- 5. 호출 계층 구조 (Call Hierarchy)
+    -- "나를 부르는 함수"와 "내가 부르는 함수"를 트리 형태로 봅니다.
+    { "<leader>ci", "<cmd>Telescope lsp_incoming_calls<cr>", desc = "나를 호출하는 함수 (Incoming)" },
+    { "<leader>co", "<cmd>Telescope lsp_outgoing_calls<cr>", desc = "내가 호출하는 함수 (Outgoing)" },
+},
 }
