@@ -1,8 +1,8 @@
 -- 1. 리더 키 설정 (스페이스바)
--- 플러그인 로드 전에 설정해야 합니다.
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-  
+-- Deprecated API 경고 억제
+vim.deprecate = function() end
 -- 배경 투명화 강제 적용 (치트키)
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
@@ -21,7 +21,23 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Load filetype configuration before plugins
+pcall(require, "config.filetype")
 pcall(require, "config.keymaps")
+pcall(require, "config.enhanced_keymaps")  -- 추가 키맵
+
+-- Setup enhanced diagnostics
+local diagnostics = require("config.diagnostics")
+diagnostics.setup()
+diagnostics.setup_keymaps()
+
+-- Setup LSP diagnostics
+local lsp_diag = require("config.lsp_diagnostics")
+lsp_diag.setup_keymaps()
+
+-- Setup symbol diagnostics
+pcall(require, "config.symbol_diagnostics")
+
 -- 3. 플러그인 로드 및 설정 시작
 require("lazy").setup({
   -- "lua/plugins" 폴더 안에 있는 모든 lua 파일을 플러그인으로 인식해라!
@@ -31,6 +47,10 @@ require("lazy").setup({
   -- (선택) 설치 화면 디자인 설정
   ui = { border = "rounded" },
 })
+
+-- 4. Auto .clangd generation (after plugins are loaded)
+-- This must be loaded AFTER lazy.nvim to avoid plugin conflicts
+pcall(require, "config.auto_clangd")
 
 -- 4. 기본 옵션 (줄 번호 등) - 나중에 따로 파일로 뺄 수 있지만 일단 여기에 둡니다.
 vim.opt.number = true
